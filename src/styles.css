@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+
+  --color-canvas: #d9d3c7;
+  --color-paper: #f3f0ea;
+  --color-surface: #fffdf8;
+  --color-surface-2: #ebe6dc;
+  --color-ink: #161614;
+  --color-muted: #6b6860;
+  --color-subtle: #8c877d;
+  --color-primary: #1c1c19;
+  --color-primary-fg: #f6f3ed;
+  --color-accent: #5c6b73;
+  --color-dark: #141513;
+  --color-dark-fg: #f3f0ea;
+  --color-dark-muted: #a9a49b;
+  --color-line: #ddd6c8;
+  --color-success: #2f5d3a;
+  --color-danger: #8f3d32;
+
+  --radius-shell: 1.75rem;
+  --radius-card: 1.5rem;
+  --radius-panel: 1.25rem;
+  --radius-control: 0.75rem;
+  --aspect-photo: 4/3;
+  --aspect-wide: 16/9;
+  --aspect-story: 3/2;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+  }
+
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-ink) 88%, white);
+    color: var(--color-paper);
+  }
+}
+
+@layer components {
+  .img-frame {
+    outline: 1px solid color-mix(in oklab, var(--color-ink) 12%, transparent);
+    outline-offset: -1px;
+  }
+
+  .img-frame-light {
+    outline: 1px solid color-mix(in oklab, white 16%, transparent);
+    outline-offset: -1px;
+  }
+}
+
+:root {
+  --shadow-border:
+    0px 0px 0px 1px rgba(22, 22, 20, 0.06),
+    0px 1px 2px -1px rgba(22, 22, 20, 0.06),
+    0px 2px 4px 0px rgba(22, 22, 20, 0.04);
+  --shadow-border-hover:
+    0px 0px 0px 1px rgba(22, 22, 20, 0.08),
+    0px 1px 2px -1px rgba(22, 22, 20, 0.08),
+    0px 2px 4px 0px rgba(22, 22, 20, 0.06);
+  --shadow-lift:
+    0px 0px 0px 1px rgba(22, 22, 20, 0.06),
+    0px 18px 40px -24px rgba(22, 22, 20, 0.35);
+  --motion-stagger: 40ms;
+  --motion-quick: 150ms;
+  --motion-fast: 250ms;
+  --motion-slow: 400ms;
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
